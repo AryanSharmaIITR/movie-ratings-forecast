@@ -1,0 +1,50 @@
+{
+  "Baseline (bias)":{
+    "RMSE":0.8999,
+    "MAE":0.7081,
+    "MAP@10":0.0182,
+    "NDCG@10":0.0584,
+    "Precision@10":0.0669,
+    "Recall@10":0.0318,
+    "HitRate@10":0.4803,
+    "Coverage@10":0.0426,
+    "fit_seconds":0.2,
+    "eval_seconds":2.2
+  },
+  "ALS (MF)":{
+    "RMSE":0.8291,
+    "MAE":0.6417,
+    "MAP@10":0.1009,
+    "NDCG@10":0.2039,
+    "Precision@10":0.1753,
+    "Recall@10":0.084,
+    "HitRate@10":0.7856,
+    "Coverage@10":0.3922,
+    "fit_seconds":67.8,
+    "eval_seconds":2.4
+  },
+  "Item-based KNN CF":{
+    "RMSE":0.8428,
+    "MAE":0.6567,
+    "MAP@10":0.0236,
+    "NDCG@10":0.0619,
+    "Precision@10":0.0643,
+    "Recall@10":0.0292,
+    "HitRate@10":0.4038,
+    "Coverage@10":0.6017,
+    "fit_seconds":2.6,
+    "eval_seconds":7.6
+  },
+  "Funk-SVD (MF + SGD)":{
+    "RMSE":0.8206,
+    "MAE":0.6405,
+    "MAP@10":0.0546,
+    "NDCG@10":0.1298,
+    "Precision@10":0.1302,
+    "Recall@10":0.0628,
+    "HitRate@10":0.6806,
+    "Coverage@10":0.6426,
+    "fit_seconds":226.7,
+    "eval_seconds":2.1
+  }
+}

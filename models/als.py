@@ -45,11 +45,10 @@ class ALS(BaseRecommender):
             self._als_step(Ru, self.Q, self.P, eye)   
             self._als_step(Ri, self.P, self.Q, eye)  
 
-            if self.verbose:
-                pred = self.predict_pairs(u, i)
-                rmse = float(np.sqrt(np.mean((r - pred) ** 2)))
+            pred = self.predict_pairs(u, i)
+            rmse = float(np.sqrt(np.mean((r - pred) ** 2)))
 
-                print(f"    [als] iter {it + 1:>2}/{self.n_iters}  train RMSE={rmse:.4f}", flush=True)
+            print(f"    [als] iter {it + 1:>2}/{self.n_iters}  train RMSE={rmse:.4f}", flush=True)
         return self
 
     @staticmethod
