@@ -30,7 +30,7 @@ def build_model(name, quick_mode=False):
     return model_class()
 
 # ========== CONFIGURATION ==========
-MODELS_TO_TRAIN = ["baseline", "als", "itemknn"]
+MODELS_TO_TRAIN = ["baseline", "als", "itemknn", "svd"]
 TEST_FRAC = 0.2
 K_VALUE = 10 
 QUICK_MODE = False  
@@ -69,3 +69,13 @@ for model_name in MODELS_TO_TRAIN:
     print(f"        fit={fit_time:.1f}s  RMSE={eval_results['RMSE']:.4f}  "
           f"MAP@{K_VALUE}={eval_results[f'MAP@{K_VALUE}']:.4f}  "
           f"NDCG@{K_VALUE}={eval_results[f'NDCG@{K_VALUE}']:.4f}\n", flush=True)
+    
+comparison_df = pd.DataFrame(results).set_index("model")
+cols_to_keep = ["RMSE", "MAE", f"MAP@{K_VALUE}", f"NDCG@{K_VALUE}",
+                f"Precision@{K_VALUE}", f"Recall@{K_VALUE}", f"HitRate@{K_VALUE}",
+                f"Coverage@{K_VALUE}", "fit_seconds", "eval_seconds"]
+cols_to_keep = [c for c in cols_to_keep if c in comparison_df.columns]
+comparison_df = comparison_df[cols_to_keep]
+
+comparison_df.to_csv(paths.RESULTS_DIR / "comparison.csv")
+comparison_df.round(4).to_json(paths.RESULTS_DIR / "comparison.json", orient="index", indent=2)
