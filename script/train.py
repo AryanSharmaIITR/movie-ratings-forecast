@@ -23,10 +23,14 @@ def load_data():
 
 def build_model(name, quick_mode=False):
     model_class = MODELS[name]
+    if name == "svd":
+        return model_class(n_factors=50, n_epochs=8 if quick_mode else 25)
+    if name == "als":
+        return model_class(n_factors=40, n_iters=4 if quick_mode else 15)
     return model_class()
 
-# ========== CONFIGURATION - EDIT THESE ==========
-MODELS_TO_TRAIN = ["baseline"] 
+# ========== CONFIGURATION ==========
+MODELS_TO_TRAIN = ["baseline", "als", "itemknn"]
 TEST_FRAC = 0.2
 K_VALUE = 10 
 QUICK_MODE = False  
