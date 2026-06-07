@@ -217,3 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 DataSet/
+
+# Large model artifacts (exceed GitHub's 100MB limit)
+results/Artifacts/itemknn.pkl
+results/Artifacts/itemknn.zip
